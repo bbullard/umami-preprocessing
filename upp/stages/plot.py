@@ -45,7 +45,7 @@ def make_hist(stage, flavours, variable, in_paths, bins_range=None, suffix=""):
         )
 
     plot.draw()
-    out_dir = Path(in_paths[0]).parent.parent / "plots"
+    out_dir = Path(in_paths[0]).parent / "plots"
     out_dir.mkdir(exist_ok=True)
     fname = f"{stage}_{variable}"
     out_path = out_dir / f"{fname}{suffix}.png"
@@ -60,6 +60,7 @@ def main(config, stage):
         paths = [path_append(config.out_fname, sample) for sample in config.components.samples]
 
     for var in config.sampl_cfg.vars:
+        log.info(f"Creating plot for {var}")
         make_hist(stage, config.components.flavours, var, paths)
         if "pt" in var:
             make_hist(stage, config.components.flavours, var, paths, (0, 500e3), "low")

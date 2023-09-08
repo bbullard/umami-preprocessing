@@ -109,6 +109,7 @@ class Components:
                 pattern = tuple(pattern)
             sample = Sample(pattern=pattern, ntuple_dir=pp_cfg.ntuple_dir, name=c["sample"]["name"])
             for name in c["flavours"]:
+                print(name)
                 num_jets = c["num_jets"]
                 if pp_cfg.split == "val":
                     num_jets = c.get("num_jets_val", num_jets // 10)

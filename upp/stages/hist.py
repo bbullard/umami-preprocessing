@@ -27,6 +27,7 @@ class Hist:
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
         # bin jets
+        log.info(f"Resampling variables: {resampling_vars}")
         hist = bin_jets(jets[resampling_vars], bins)[0]
         pbin = hist / len(jets)  # probability (rate) of each bin
         if not math.isclose(pbin.sum(), 1, rel_tol=1e-4, abs_tol=1e-4):
