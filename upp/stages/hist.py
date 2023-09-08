@@ -27,6 +27,7 @@ class Hist:
         self.path.parent.mkdir(parents=True, exist_ok=True)
 
         # bin jets
+        log.info(f"Resampling variables: {resampling_vars}")
         hist = bin_jets(jets[resampling_vars], bins)[0]
         pdf = hist / len(jets)
         if not math.isclose(pdf.sum(), 1, rel_tol=1e-4, abs_tol=1e-4):
