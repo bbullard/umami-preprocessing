@@ -36,33 +36,33 @@ inclusive: &inclusive
   cuts: []
 
 components:
-  - region:
-      <<: *inclusive
-    sample:
-      <<: *ttbar_allhad
-    flavours: [ujets]
-    num_jets: 300_000
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_allhad
+  #   flavours: [ujets]
+  #   num_jets: 300_000
 
-  - region:
-      <<: *inclusive
-    sample:
-      <<: *ttbar_allhad
-    flavours: [cjets]
-    num_jets: 200_000
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_allhad
+  #   flavours: [cjets]
+  #   num_jets: 200_000
 
   - region:
       <<: *inclusive
     sample:
       <<: *ttbar_allhad
     flavours: [bjets]
-    num_jets: 500_000
+    num_jets: 1_000_000
     
-  - region:
-      <<: *inclusive
-    sample:
-      <<: *ttbar_allhad
-    flavours: [taujets]
-    num_jets: 100_000
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_allhad
+  #   flavours: [taujets]
+  #   num_jets: 100_000
 
 resampling:
   target: bjets
@@ -101,7 +101,7 @@ global:
   batch_size: 10_000
   num_jets_estimate: 10_000
   base_dir: /gpfs/slac/atlas/fs1/d/bbullard/BjetRegression/
-  out_dir: FTag_upp/Rel22_ttbar_AllHadronic_edge
+  out_dir: FTag_upp/Rel22_ttbar_AllHadronic_bjetonly
   ntuple_dir: Input_Ftag_Ntuples/
 
 variables:
