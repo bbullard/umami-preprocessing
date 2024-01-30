@@ -16,8 +16,8 @@
 # No GPUs needed
 #SBATCH --gpus=0
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=8G
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
 #SBATCH --output=/sdf/home/b/bbullard/bjes/umami-preprocessing/upp/configs/sbatch_out/slurm-%j.%x.out
 #SBATCH --error=/sdf/home/b/bbullard/bjes/umami-preprocessing/upp/configs/sbatch_out/slurm-%j.%x.err
  
@@ -33,4 +33,6 @@ echo "Activated environment ${CONDA_DEFAULT_ENV}"
 
 # run the training
 echo "Running training script..."
-srun preprocess --config configs/bjr/bjr_PHYSVAL_ttbar.yaml --split all
+#srun preprocess --config configs/bjr/bjr_PHYSVAL_ttbar_resampled.yaml --split all
+srun preprocess --config configs/bjr/bjr_PHYSVAL_ttbar_resampled.yaml --split val
+srun preprocess --config configs/bjr/bjr_PHYSVAL_ttbar_resampled.yaml --split test

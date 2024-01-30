@@ -1,0 +1,372 @@
+ttbar_nonallhad: &ttbar_nonallhad
+  name: ttbar_nonallhad
+  pattern: nonallhad_PHYSVAL_mc20_410470/*.h5
+
+global_cuts:
+  train:
+    - [eventNumber, "%10<=", 7]
+  val:
+    - [eventNumber, "%10==", 8]
+  test:
+    - [eventNumber, "%10==", 9]
+
+# Not needed to do manually, features already available via ftag tools!
+# light: &light
+#   name: light
+#   cuts:
+#     - [HadronConeExclTruthLabelID, "<", 4]
+
+# charm: &charm
+#   name: charm
+#   cuts:
+#     - [HadronConeExclTruthLabelID, "==", 4]
+
+# bottom: &bottom
+#   name: bottom
+#   cuts:
+#     - [HadronConeExclTruthLabelID, "==", 5]
+
+# tau: &tau
+#   name: tau
+#   cuts:
+#     - [HadronConeExclTruthLabelID, "==", 15]
+
+inclusive: &inclusive
+  name: inclusive
+  cuts: []
+
+truth_pt: &truth_pt
+  name: truth_pt
+  cuts:
+    - [truthJetPt, ">", 10_000]
+    - [truthJetPt, "<", 6_000_000]
+
+low_pt: &low_pt
+  name: low_pt
+  cuts:
+    - [truthJetPt, ">", 10_000]
+    - [truthJetPt, "<", 50_000]
+
+high_pt: &high_pt
+  name: high_pt
+  cuts:
+    - [truthJetPt, ">", 50_000]
+    - [truthJetPt, "<", 6_000_000]
+
+components:
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_nonallhad
+  #   flavours: [ujets]
+  #   num_jets: 300_000
+
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_nonallhad
+  #   flavours: [cjets]
+  #   num_jets: 200_000
+
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_nonallhad
+  #   flavours: [bjets]
+  #   num_jets: 1_000_000
+    
+  # - region:
+  #     <<: *inclusive
+  #   sample:
+  #     <<: *ttbar_nonallhad
+  #   flavours: [taujets]
+  #   num_jets: 100_000
+
+  - region:
+      <<: *low_pt
+    sample:
+      <<: *ttbar_nonallhad
+    flavours: [bjets]
+    num_jets: 49_000_000
+
+  - region:
+      <<: *high_pt
+    sample:
+      <<: *ttbar_nonallhad
+    flavours: [bjets]
+    num_jets: 50_000_000
+
+resampling:
+  target: bjets
+  method: none #countup #pdf
+  sampling_fraction: 1 #auto
+  variables:
+    pt:
+      bins: [[20_000, 1_000_000, 28]]
+    eta:
+      bins: [[-2.5, 2.5, 10]]
+    #n_tracks:
+    #  bins: [[0, 20, 20]]
+    #nPrimaryVertices:
+    #  bins: [[0, 50, 50]]
+    # d0:
+    #   bins: [[-1.0, 1.0, 20]]
+    # z0SinTheta:
+    #   bins: [[-1.0, 1.0, 20]]
+    # dphi:
+    #   bins: [[-1.0, 1.0, 20]]
+    # deta:
+    #   bins: [[-1.0, 1.0, 20]]
+    # qOverP:
+    #   bins: [[-1.0, 1.0, 20]]
+    # IP3D_signed_d0_significance:
+    #   bins: [[-5.0, 5.0, 20]]
+    # leptonID:
+    #   bins: [[-15, 15, 30]]
+    # truthOriginLabel:
+    #   bins: [[-15, 15, 30]]
+    # truthVertexIndex:
+    #   bins: [[0, 5, 5]]
+
+
+global:
+  batch_size: 10_000
+  num_jets_estimate: 10_000
+  base_dir: /gpfs/slac/atlas/fs1/d/bbullard/BjetRegression/upp_output/physval/ttbar_allhad/
+  out_dir: half-half-100mil-bjet_resampled/
+  ntuple_dir: ../../../../../pbhattar/BjetRegression/Input_Ftag_Ntuples/
+
+variables:
+  jets:
+    inputs:
+      - GN120220509_pb
+      - GN120220509_pc
+      - GN120220509_pu
+      - GN1Lep20220509_pb
+      - GN1Lep20220509_pc
+      - GN1Lep20220509_pu
+      - GN2v00_pb
+      - GN2v00_pc
+      - GN2v00_pu
+      - softElectron_ptr
+      - softElectron_dr
+      - softElectron_isoPt
+      - softElectron_abseta
+      - softElectron_d0Signed
+      - softElectron_z0Signed
+      - softElectron_d0SignedSig
+      # - softElectron_epht
+      - softElectron_dphires
+      - softElectron_eop
+      - softElectron_rhad
+      - softElectron_rhad1
+      - softElectron_eratio
+      - softElectron_weta2
+      - softElectron_reta
+      - softElectron_f1
+      - softElectron_f3
+      - softElectron_phf
+      - SV1_correctSignificance3d
+      - softMuon_pt
+      - softMuon_dR
+      - softMuon_eta
+      - softMuon_phi
+      - softMuon_qOverPratio
+      - softMuon_momentumBalanceSignificance
+      - softMuon_scatteringNeighbourSignificance
+      - softMuon_pTrel
+      - softMuon_ip3dD0
+      - softMuon_ip3dZ0
+      - softMuon_ip3dD0Significance
+      - softMuon_ip3dZ0Significance
+      - softMuon_ip3dD0Uncertainty
+      - softMuon_ip3dZ0Uncertainty
+      - JetFitterFlip_energyFraction
+      - JetFitterFlip_mass
+      - JetFitterFlip_significance3d
+      - JetFitterFlip_deltaphi
+      - JetFitterFlip_deltaeta
+      - JetFitterFlip_massUncorr
+      - JetFitterFlip_dRFlightDir
+      - pt_btagJes
+      - eta_btagJes
+      # - absEta_btagJes
+      - scalarSumTrackPt
+      # - JetFitter_energyFraction
+      # - JetFitter_mass
+      # - JetFitter_significance3d
+      # - JetFitter_deltaphi
+      # - JetFitter_deltaeta
+      # - JetFitter_massUncorr
+      # - JetFitter_dRFlightDir
+      # - SV1_masssvx
+      # - SV1_efracsvx
+      # - SV1_significance3d
+      # - SV1_dstToMatLay
+      # - SV1_deltaR
+      # - SV1_Lxy
+      # - SV1_L3d
+      # - JetFitter_deltaR
+      # - JetFitterSecondaryVertex_displacement3d
+      # - JetFitterSecondaryVertex_displacement2d
+      # - JetFitterSecondaryVertex_mass
+      # - JetFitterSecondaryVertex_energy
+      # - JetFitterSecondaryVertex_energyFraction
+      # - JetFitterSecondaryVertex_minimumTrackRelativeEta
+      # - JetFitterSecondaryVertex_maximumTrackRelativeEta
+      # - JetFitterSecondaryVertex_averageTrackRelativeEta
+      # - JetFitterSecondaryVertex_maximumAllJetTrackRelativeEta
+      # - JetFitterSecondaryVertex_minimumAllJetTrackRelativeEta
+      # - JetFitterSecondaryVertex_averageAllJetTrackRelativeEta
+      # - rnnip_pu
+      # - rnnip_pc
+      # - rnnip_pb
+      # - DL1r_pu
+      # - DL1r_pc
+      # - DL1r_pb
+      # - DL1r20210824r22_pb
+      # - DL1r20210824r22_pc
+      # - DL1r20210824r22_pu
+      # - dipsLoose20210729_pb
+      # - dipsLoose20210729_pc
+      # - dipsLoose20210729_pu
+      # - dipsLoose20220314v2_pb
+      # - dipsLoose20220314v2_pc
+      # - dipsLoose20220314v2_pu
+      # - dipsLoose20210729flip_pb
+      # - dipsLoose20210729flip_pc
+      # - dipsLoose20210729flip_pu
+      # - DL1dv00_pu
+      # - DL1dv00_pc
+      # - DL1dv00_pb
+      # - DL1dv01_pu
+      # - DL1dv01_pc
+      # - DL1dv01_pb
+      # - JetFitterFlip_nVTX
+      # - JetFitterFlip_nSingleTracks
+      # - JetFitterFlip_nTracksAtVtx
+      # - JetFitterFlip_N2Tpair
+      # - IP3D_nTrks
+      # - JetFitter_nVTX
+      # - JetFitter_nSingleTracks
+      # - JetFitter_nTracksAtVtx
+      # - JetFitter_N2Tpair
+      # - SV1_N2Tpair
+      # - SV1_NGTinSvx
+      # - JetFitterSecondaryVertex_nTracks
+      # - softMuon_isDefaults
+      # - rnnip_isDefaults
+      # - JetFitter_isDefaults
+      # - SV1_isDefaults
+      # - JetFitterSecondaryVertex_isDefaults
+      - pt
+      - eta
+      - energy
+      - mass
+      - n_tracks
+      - GhostBHadronsFinalCount
+      - GhostCHadronsFinalCount
+      # - HadronConeExclTruthLabelID
+      - HadronConeExclExtendedTruthLabelID
+      - PartonTruthLabelID
+      - jetPtRank
+      - primaryVertexDetectorZ
+      # - mcEventWeight
+      # - eventNumber
+      - averageInteractionsPerCrossing
+      - actualInteractionsPerCrossing
+      - nPrimaryVertices
+      # - isRun3
+    labels:
+      - truthJetPt
+      - truthJetEta
+      - truthJetM
+      # - HadronConeExclTruthLabelID
+      - HadronConeExclTruthLabelPt
+      - HadronConeExclTruthLabelLxy
+
+  tracks:
+    inputs:
+      - expectInnermostPixelLayerHit
+      - expectNextToInnermostPixelLayerHit
+      - numberOfInnermostPixelLayerHits
+      - numberOfNextToInnermostPixelLayerHits
+      - numberOfInnermostPixelLayerSharedHits
+      - numberOfInnermostPixelLayerSplitHits
+      - numberOfPixelHits
+      - numberOfPixelHoles
+      - numberOfPixelSharedHits
+      - numberOfPixelSplitHits
+      - numberOfPixelDeadSensors
+      - numberOfSCTHits
+      - numberOfSCTHoles
+      - numberOfSCTSharedHits
+      - numberOfSCTDeadSensors
+      - numberOfTRTHits
+      - numberDoF
+      - theta
+      - qOverP
+      - chiSquared
+      - radiusOfFirstHit
+      - pixeldEdx
+      - pt
+      - ptfrac
+      - deta
+      - abs_deta
+      - z0RelativeToBeamspot
+      - qOverPUncertainty
+      - d0
+      - z0SinTheta
+      - eta
+      - d0Uncertainty
+      - z0SinThetaUncertainty
+      - phiUncertainty
+      - thetaUncertainty
+      - dphi
+      - dr
+      - z0RelativeToBeamspotUncertainty
+      - IP3D_signed_d0
+      - IP3D_signed_z0
+      - IP3D_signed_d0_significance
+      - IP3D_signed_z0_significance
+      - valid
+    labels:
+      - truthOriginLabel
+      - truthVertexIndex
+
+  electrons:
+    inputs:
+      - pt
+      - eta
+      - phi
+      - ftag_et
+      - ftag_z0AlongBeamspot
+      - ftag_z0AlongBeamspotSignificance
+      - ftag_ptVarCone30OverPt
+      - ftag_deltaPOverP
+      - deltaEta1
+      - deltaPhiRescaled2
+      - ftag_energyOverP
+      - Rhad
+      - Rhad1
+      - Eratio
+      - weta2
+      - Rphi
+      - Reta
+      - wtots1
+      - f1
+      - f3
+      - ptfrac
+      - ptrel
+      - dr
+      - numberOfPixelHits
+      - eProbabilityHT
+      - qOverP
+      - numberOfSCTHitsInclDead
+      - d0RelativeToBeamspot
+      - d0RelativeToBeamspotSignificance
+      - abs_eta
+      - valid
+    labels:
+      - ftag_truthOriginLabel
+      - ftag_truthVertexIndex
