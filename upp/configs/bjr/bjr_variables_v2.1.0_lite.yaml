@@ -1,0 +1,272 @@
+jets:
+  inputs:
+    #- GN120220509_pb
+    #- GN120220509_pc
+    #- GN120220509_pu
+    #- GN1Lep20220509_pb
+    #- GN1Lep20220509_pc
+    #- GN1Lep20220509_pu
+    - GN2v00_pb
+    - GN2v00_pc
+    - GN2v00_pu
+    - softElectron_ptr
+    - softElectron_dr
+    - softElectron_isoPt
+    - softElectron_abseta
+    - softElectron_d0Signed
+    - softElectron_z0Signed
+    - softElectron_d0SignedSig
+    #- softElectron_epht
+    - softElectron_dphires
+    - softElectron_eop
+    - softElectron_rhad
+    - softElectron_rhad1
+    - softElectron_eratio
+    - softElectron_weta2
+    - softElectron_reta
+    - softElectron_f1
+    - softElectron_f3
+    - softElectron_phf
+    #- SV1_correctSignificance3d
+    - softMuon_pt
+    - softMuon_dR
+    - softMuon_eta
+    - softMuon_phi
+    - softMuon_qOverPratio
+    - softMuon_momentumBalanceSignificance
+    - softMuon_scatteringNeighbourSignificance
+    - softMuon_pTrel
+    - softMuon_ip3dD0
+    - softMuon_ip3dZ0
+    - softMuon_ip3dD0Significance
+    - softMuon_ip3dZ0Significance
+    - softMuon_ip3dD0Uncertainty
+    - softMuon_ip3dZ0Uncertainty
+    #- JetFitterFlip_energyFraction
+    #- JetFitterFlip_mass
+    #- JetFitterFlip_significance3d
+    #- JetFitterFlip_deltaphi
+    #- JetFitterFlip_deltaeta
+    #- JetFitterFlip_massUncorr
+    #- JetFitterFlip_dRFlightDir
+    - scalarSumTrackPt
+    # - JetFitter_energyFraction
+    # - JetFitter_mass
+    # - JetFitter_significance3d
+    # - JetFitter_deltaphi
+    # - JetFitter_deltaeta
+    # - JetFitter_massUncorr
+    # - JetFitter_dRFlightDir
+    # - SV1_masssvx
+    # - SV1_efracsvx
+    # - SV1_significance3d
+    # - SV1_dstToMatLay
+    # - SV1_deltaR
+    # - SV1_Lxy
+    # - SV1_L3d
+    # - JetFitter_deltaR
+    # - JetFitterSecondaryVertex_displacement3d
+    # - JetFitterSecondaryVertex_displacement2d
+    # - JetFitterSecondaryVertex_mass
+    # - JetFitterSecondaryVertex_energy
+    # - JetFitterSecondaryVertex_energyFraction
+    # - JetFitterSecondaryVertex_minimumTrackRelativeEta
+    # - JetFitterSecondaryVertex_maximumTrackRelativeEta
+    # - JetFitterSecondaryVertex_averageTrackRelativeEta
+    # - JetFitterSecondaryVertex_maximumAllJetTrackRelativeEta
+    # - JetFitterSecondaryVertex_minimumAllJetTrackRelativeEta
+    # - JetFitterSecondaryVertex_averageAllJetTrackRelativeEta
+    # - rnnip_pu
+    # - rnnip_pc
+    # - rnnip_pb
+    # - DL1r_pu
+    # - DL1r_pc
+    # - DL1r_pb
+    # - DL1r20210824r22_pb
+    # - DL1r20210824r22_pc
+    # - DL1r20210824r22_pu
+    # - dipsLoose20210729_pb
+    # - dipsLoose20210729_pc
+    # - dipsLoose20210729_pu
+    # - dipsLoose20220314v2_pb
+    # - dipsLoose20220314v2_pc
+    # - dipsLoose20220314v2_pu
+    # - dipsLoose20210729flip_pb
+    # - dipsLoose20210729flip_pc
+    # - dipsLoose20210729flip_pu
+    # - DL1dv00_pu
+    # - DL1dv00_pc
+    # - DL1dv00_pb
+    # - DL1dv01_pu
+    # - DL1dv01_pc
+    # - DL1dv01_pb
+    # - JetFitterFlip_nVTX
+    # - JetFitterFlip_nSingleTracks
+    # - JetFitterFlip_nTracksAtVtx
+    # - JetFitterFlip_N2Tpair
+    # - IP3D_nTrks
+    # - JetFitter_nVTX
+    # - JetFitter_nSingleTracks
+    # - JetFitter_nTracksAtVtx
+    # - JetFitter_N2Tpair
+    # - SV1_N2Tpair
+    # - SV1_NGTinSvx
+    # - JetFitterSecondaryVertex_nTracks
+    # - softMuon_isDefaults
+    # - rnnip_isDefaults
+    # - JetFitter_isDefaults
+    # - SV1_isDefaults
+    # - JetFitterSecondaryVertex_isDefaults
+    - pt
+    - eta
+    - energy
+    - mass
+    - n_tracks
+    - n_muons
+    - GhostBHadronsFinalCount
+    - GhostCHadronsFinalCount
+    #- HadronConeExclTruthLabelID
+    #- HadronConeExclExtendedTruthLabelID
+    #- PartonTruthLabelID
+    - jetPtRank
+    #- primaryVertexDetectorZ
+    #- truthJetEta
+    #- truthJetPhi
+    #- truthJetM
+    #- truthJetEta_dpT
+    #- truthJetPhi_dpT
+    #- truthJetM_dpT
+    #- truthJetEta_dpTdR
+    #- truthJetPhi_dpTdR
+    #- truthJetM_dpTdR
+    #- muCorr_Pt
+    #- muCorr_Eta
+    #- muCorr_Phi
+    #- muCorr_M
+    #- PtReco_SF
+    #- sumPtR4_truth_hadrons
+    #- sumPtR4_truth_fromBC
+    #- sumPtR4_truth_notBC
+    - sumPtR4_truth_neutrinos
+    #- sumPt_truth_hadrons
+    #- sumPt_truth_fromBC
+    #- sumPt_truth_notBC
+    - sumPt_truth_neutrinos
+    #- dRR4_truth_hadrons
+    #- dRR4_truth_fromBC
+    #- dRR4_truth_notBC
+    #- dRR4_truth_neutrinos
+    #- dR_truth_hadrons
+    #- dR_truth_fromBC
+    #- dR_truth_notBC
+    #- dR_truth_neutrinos
+  labels:
+    - truthJetPt
+    #- truthJetPt_dpT
+    #- truthJetPt_dpTdR
+    #- HadronConeExclTruthLabelPt
+    #- HadronConeExclTruthLabelLxy
+
+tracks:
+  inputs:
+    # Nominal
+    - d0
+    - z0SinTheta
+    - dphi
+    - deta
+    - qOverP
+    - IP3D_signed_d0_significance
+    - IP3D_signed_z0_significance
+    - phiUncertainty
+    - thetaUncertainty
+    - qOverPUncertainty
+    - numberOfPixelHits
+    - numberOfSCTHits
+    - numberOfInnermostPixelLayerHits
+    - numberOfNextToInnermostPixelLayerHits
+    - numberOfInnermostPixelLayerSharedHits
+    - numberOfInnermostPixelLayerSplitHits
+    - numberOfPixelSharedHits
+    - numberOfPixelSplitHits
+    - numberOfSCTSharedHits
+    - valid
+    # extras
+    #- expectInnermostPixelLayerHit
+    #- expectNextToInnermostPixelLayerHit
+    #- numberOfPixelHoles
+    #- numberOfPixelDeadSensors
+    #- numberOfSCTHoles
+    #- numberOfSCTDeadSensors
+    #- numberOfTRTHits
+    #- numberDoF
+    #- theta
+    #- chiSquared
+    #- radiusOfFirstHit
+    #- pixeldEdx
+    #- ptfrac
+    #- z0RelativeToBeamspot
+    #- eta
+    #- d0Uncertainty
+    #- z0SinThetaUncertainty
+    #- z0RelativeToBeamspotUncertainty
+    #- IP3D_signed_d0
+    #- IP3D_signed_z0
+    #- numberOfInnermostPixelLayerOutliers
+    #- numberOfNextToInnermostPixelLayerOutliers
+    #- numberOfNextToInnermostPixelLayerSplitHits
+    #- numberOfNextToInnermostPixelLayerSharedHits
+    #- numberOfPixelSpoiltHits
+    #- numberOfContribPixelLayers
+  labels:
+    - truthOriginLabel
+    - truthVertexIndex
+    - leptonID
+
+#electrons:
+#  inputs:
+#    - pt
+#    - eta
+#    - phi
+#    - ftag_et
+#    - ftag_z0AlongBeamspot
+#    - ftag_z0AlongBeamspotSignificance
+#    - ftag_ptVarCone30OverPt
+#    - ftag_deltaPOverP
+#    - deltaEta1
+#    - deltaPhiRescaled2
+#    - ftag_energyOverP
+#    - Rhad
+#    - Rhad1
+#    - Eratio
+#    - weta2
+#    - Rphi
+#    - Reta
+#    - wtots1
+#    - f1
+#    - f3
+#    - ptfrac
+#    - ptrel
+#    - dr
+#    - numberOfPixelHits
+#    - eProbabilityHT
+#    - qOverP
+#    - numberOfSCTHitsInclDead
+#    - d0RelativeToBeamspot
+#    - d0RelativeToBeamspotSignificance
+#    - abs_eta
+#    - valid
+#  labels:
+#    - ftag_truthOriginLabel
+#    - ftag_truthVertexIndex
+
+#flow:
+#  inputs:
+#    - pt
+#    - energy
+#    - mass
+#    - ptrel
+#    - ptfrac
+#    - deta
+#    - dphi
+#    - nNeutralObjects
+#    - signal_type
