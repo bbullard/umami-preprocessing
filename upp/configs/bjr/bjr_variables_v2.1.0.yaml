@@ -123,11 +123,6 @@ jets:
     - mass
     - n_tracks
     - n_muons
-    - GhostBHadronsFinalCount
-    - GhostCHadronsFinalCount
-    #- HadronConeExclTruthLabelID
-    #- HadronConeExclExtendedTruthLabelID
-    - PartonTruthLabelID
     - jetPtRank
     - primaryVertexDetectorZ
     - truthJetEta
@@ -144,6 +139,18 @@ jets:
     - muCorr_Phi
     - muCorr_M
     - PtReco_SF
+    - eventNumber
+  labels:
+    - truthJetPt
+    - truthJetPt_dpT
+    - truthJetPt_dpTdR
+    - HadronConeExclTruthLabelPt
+    - HadronConeExclTruthLabelLxy
+    - HadronConeExclTruthLabelID
+    - GhostBHadronsFinalCount
+    - GhostCHadronsFinalCount
+    - PartonTruthLabelID
+    - HadronConeExclExtendedTruthLabelID
     - sumPtR4_truth_hadrons
     - sumPtR4_truth_fromBC
     - sumPtR4_truth_notBC
@@ -160,12 +167,12 @@ jets:
     - dR_truth_fromBC
     - dR_truth_notBC
     - dR_truth_neutrinos
-  labels:
-    - truthJetPt
-    - truthJetPt_dpT
-    - truthJetPt_dpTdR
-    - HadronConeExclTruthLabelPt
-    - HadronConeExclTruthLabelLxy
+    - TauDecayLabel
+    - LeptonDecayLabel
+    - n_truth_hadrons
+    - n_truth_fromBC
+    - n_truth_notBC
+    - n_truth_neutrinos
 
 tracks:
   inputs:
@@ -218,56 +225,56 @@ tracks:
     - numberOfNextToInnermostPixelLayerSharedHits
     - numberOfPixelSpoiltHits
     - numberOfContribPixelLayers
+    - leptonID
   labels:
     - truthOriginLabel
     - truthVertexIndex
-    - leptonID
 
-electrons:
-  inputs:
-    - pt
-    - eta
-    - phi
-    - ftag_et
-    - ftag_z0AlongBeamspot
-    - ftag_z0AlongBeamspotSignificance
-    - ftag_ptVarCone30OverPt
-    - ftag_deltaPOverP
-    - deltaEta1
-    - deltaPhiRescaled2
-    - ftag_energyOverP
-    - Rhad
-    - Rhad1
-    - Eratio
-    - weta2
-    - Rphi
-    - Reta
-    - wtots1
-    - f1
-    - f3
-    - ptfrac
-    - ptrel
-    - dr
-    - numberOfPixelHits
-    - eProbabilityHT
-    - qOverP
-    - numberOfSCTHitsInclDead
-    - d0RelativeToBeamspot
-    - d0RelativeToBeamspotSignificance
-    - abs_eta
-    - valid
-  labels:
-    - ftag_truthOriginLabel
-    - ftag_truthVertexIndex
+# electrons:
+#   inputs:
+#     - pt
+#     - eta
+#     - phi
+#     - ftag_et
+#     - ftag_z0AlongBeamspot
+#     - ftag_z0AlongBeamspotSignificance
+#     - ftag_ptVarCone30OverPt
+#     - ftag_deltaPOverP
+#     - deltaEta1
+#     - deltaPhiRescaled2
+#     - ftag_energyOverP
+#     - Rhad
+#     - Rhad1
+#     - Eratio
+#     - weta2
+#     - Rphi
+#     - Reta
+#     - wtots1
+#     - f1
+#     - f3
+#     - ptfrac
+#     - ptrel
+#     - dr
+#     - numberOfPixelHits
+#     - eProbabilityHT
+#     - qOverP
+#     - numberOfSCTHitsInclDead
+#     - d0RelativeToBeamspot
+#     - d0RelativeToBeamspotSignificance
+#     - abs_eta
+#     - valid
+#   labels:
+#     - ftag_truthOriginLabel
+#     - ftag_truthVertexIndex
 
-flow:
-  inputs:
-    - pt
-    - energy
-    - mass
-    - ptrel
-    - ptfrac
-    - deta
-    - dphi
-    - nNeutralObjects
-    - signal_type
+# flow:
+#   inputs:
+#     - pt
+#     - energy
+#     - mass
+#     - ptrel
+#     - ptfrac
+#     - deta
+#     - dphi
+#     - nNeutralObjects
+#     - signal_type

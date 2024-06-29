@@ -18,6 +18,10 @@ inclusive: &inclusive
   name: inclusive
   cuts: []
 
+inclusive2: &inclusive2
+  name: inclusive2
+  cuts: []
+
 truth_pt: &truth_pt
   name: truth_pt
   cuts:
@@ -39,14 +43,14 @@ components:
     sample:
       <<: *ttbar_nonallhad
     flavours: [bjets]
-    num_jets: 100_000_000
+    num_jets: 90_500_000
 
   - region:
-      <<: *inclusive
+      <<: *inclusive2
     sample:
       <<: *Zjets_BFilter
     flavours: [bjets]
-    num_jets: 10_000_000
+    num_jets: 9_500_000
 
 
 resampling:
@@ -67,4 +71,4 @@ global:
   out_dir: mixed_ZjetsBFilter-ttbar
   ntuple_dir: ../tdd
 
-variables: !include /sdf/home/b/bbullard/bjer/datasets/umami-preprocessing/upp/configs/bjr/bjr_variables_v2.1.0.yaml
+variables: !include /sdf/home/b/bbullard/bjer/datasets/umami-preprocessing/upp/configs/bjr/bjr_variables_v2.1.0_lite.yaml

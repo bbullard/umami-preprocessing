@@ -18,6 +18,14 @@ inclusive: &inclusive
   name: inclusive
   cuts: []
 
+dR_cleaned: &dR_cleaned
+  name: dR_cleaned
+  cuts: 
+    - [truthJetPhi-phi, "<", 0.1]
+    - [truthJetPhi-phi, ">", -0.1]
+    - [truthJetEta-eta, "<", 0.1]
+    - [truthJetEta-eta, ">", -0.1]
+
 truth_pt: &truth_pt
   name: truth_pt
   cuts:
@@ -35,7 +43,7 @@ components:
   #  num_jets: 10_000
   
    - region:
-       <<: *inclusive
+       <<: *dR_cleaned
      sample:
        <<: *ttbar_nonallhad
      flavours: [bjets]
@@ -64,7 +72,7 @@ global:
   batch_size: 10_000
   num_jets_estimate: 10_000
   base_dir: /fs/ddn/sdf/group/atlas/d/bbullard/bjr/samples/physval_v2.1/upp
-  out_dir: ttbar_nonallhad_lite
+  out_dir: ttbar_nonallhad_lite_dRcleaned
   ntuple_dir: ../tdd
 
 variables: !include /sdf/home/b/bbullard/bjer/datasets/umami-preprocessing/upp/configs/bjr/bjr_variables_v2.1.0_lite.yaml

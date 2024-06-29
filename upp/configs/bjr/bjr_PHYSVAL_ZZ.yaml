@@ -1,0 +1,55 @@
+ZllZbb: &ZllZbb
+  name: ZllZbb
+  pattern: user.pbhattar.700494.e8338_s3681_r13167_r13146_p5169.tdd.PHYSVAL_EMPFlow_jer.23_0_26.v2.1-8-gd02e038_output.h5/*.h5
+
+ZllHbb: &ZllHbb
+  name: ZllHbb
+  pattern: user.pbhattar.345055.e5706_s3681_r13167_r13146_p5169.tdd.PHYSVAL_EMPFlow_jer.23_0_26.v2.1-8-gd02e038_output.h5/*.h5
+
+global_cuts:
+  train:
+    - [eventNumber, "%100==", 0]
+  val:
+    - [eventNumber, "%100==", 0]
+  test:
+    - [eventNumber, "%10>=", 0]
+
+inclusive: &inclusive
+  name: inclusive
+  cuts: []
+
+truth_pt: &truth_pt
+  name: truth_pt
+  cuts:
+    - [truthJetPt, ">", 5_000]
+    - [truthJetPt, "<", 6_000_000]
+
+# Defines the outputs!
+components:
+  - region:
+      <<: *inclusive
+    sample:
+      <<: *ZllZbb
+    flavours: [bjets]
+    num_jets: 60_000_000
+
+resampling:
+  target: bjets
+  method: none #countup #pdf
+  sampling_fraction: 1 #auto
+  variables:
+    pt:
+      bins: [[10_000, 1_000_000, 29]]
+    eta:
+      bins: [[-2.5, 2.5, 10]]
+
+global:
+  batch_size: 10_000
+  num_jets_estimate: 10_000
+  base_dir: /fs/ddn/sdf/group/atlas/d/bbullard/bjr/samples/physval_v2.1/upp/bukin_samples/ZllZbb
+  out_dir: merged
+  #ntuple_dir: ../../../../../../pbhattar/BjetRegression/TrainingNtuples/tddoutput
+  # ntuple_dir: ../../tdd
+  ntuple_dir: ../../../tdd
+
+variables: !include /sdf/home/b/bbullard/bjer/datasets/umami-preprocessing/upp/configs/bjr/bjr_variables_v2.1.0.yaml
