@@ -121,7 +121,7 @@ jets:
     - eta
     - energy
     - mass
-    - phi
+    # - phi
     - n_tracks
     - n_muons
     - jetPtRank
@@ -232,51 +232,53 @@ tracks:
     - truthOriginLabel
     - truthVertexIndex
 
-# electrons:
-#   inputs:
-#     - pt
-#     - eta
-#     - phi
-#     - ftag_et
-#     - ftag_z0AlongBeamspot
-#     - ftag_z0AlongBeamspotSignificance
-#     - ftag_ptVarCone30OverPt
-#     - ftag_deltaPOverP
-#     - deltaEta1
-#     - deltaPhiRescaled2
-#     - ftag_energyOverP
-#     - Rhad
-#     - Rhad1
-#     - Eratio
-#     - weta2
-#     - Rphi
-#     - Reta
-#     - wtots1
-#     - f1
-#     - f3
-#     - ptfrac
-#     - ptrel
-#     - dr
-#     - numberOfPixelHits
-#     - eProbabilityHT
-#     - qOverP
-#     - numberOfSCTHitsInclDead
-#     - d0RelativeToBeamspot
-#     - d0RelativeToBeamspotSignificance
-#     - abs_eta
-#     - valid
-#   labels:
-#     - ftag_truthOriginLabel
-#     - ftag_truthVertexIndex
+electrons:
+  inputs:
+    - pt
+    - eta
+    - phi
+    - ftag_et
+    - ftag_z0AlongBeamspot
+    - ftag_z0AlongBeamspotSignificance
+    - ftag_ptVarCone30OverPt
+    - ftag_deltaPOverP
+    - deltaEta1
+    - deltaPhiRescaled2
+    - ftag_energyOverP
+    - Rhad
+    - Rhad1
+    - Eratio
+    - weta2
+    - Rphi
+    - Reta
+    - wtots1
+    - f1
+    - f3
+    - ptfrac
+    - ptrel
+    - dr
+    - numberOfPixelHits
+    - eProbabilityHT
+    - qOverP
+    - numberOfSCTHitsInclDead
+    - d0RelativeToBeamspot
+    - d0RelativeToBeamspotSignificance
+    - abs_eta
+    - valid
+  labels:
+    - ftag_truthOriginLabel
+    - ftag_truthVertexIndex
 
-# flow:
-#   inputs:
-#     - pt
-#     - energy
-#     - mass
-#     - ptrel
-#     - ptfrac
-#     - deta
-#     - dphi
-#     - nNeutralObjects
-#     - signal_type
+flow:
+  inputs:
+    - pt
+    - energy
+    - mass
+    - ptrel
+    - ptfrac
+    - deta
+    - dphi
+    # - matchedToPV
+    - nNeutralObjects
+    - signal_type
+    - valid

@@ -38,9 +38,11 @@ echo "Activated environment ${CONDA_DEFAULT_ENV}"
 
 # run the training
 echo "Running training script..."
-# srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --split all
+# srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --split val
+# srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --split test
+srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --norm
 # srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor_resampled.yaml --split all
 # srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --split val
 # srun preprocess --config configs/bjr/bjr_PHYSVAL_hybrid_allFlavor.yaml --split test
-srun preprocess --config configs/bjr/bjr_PHYSVAL_ZZ.yaml --split test
-srun preprocess --config configs/bjr/bjr_PHYSVAL_ZH.yaml --split test
+# srun preprocess --config configs/bjr/bjr_PHYSVAL_ZZ.yaml --split test
+# srun preprocess --config configs/bjr/bjr_PHYSVAL_ZH.yaml --split test
